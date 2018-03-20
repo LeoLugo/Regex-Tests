@@ -32,7 +32,8 @@ Object.defineProperty(Array.prototype, "equals", {enumerable: false});
 
 // test whether the str provided is a valid email
 function testEmail (email) {
-  
+  let rex = /\w+.\w+@\w+.?\w+/
+  return rex.test(email)
 }
 
 console.assert(testEmail("stroman.azariah@yahoo.com"));
@@ -52,7 +53,8 @@ console.assert(!testEmail("bonita43@"));
 
 // test whether the str provided is a valid phone
 function testPhone (phone) {
-  
+  let x = /\(?\d{3}\)?\s?.?-?\d{3}-?.?\d{4}/
+  return x.test(phone)
 }
 
 console.assert(testPhone("919-555-1212"));
@@ -68,7 +70,8 @@ console.assert(!testPhone("mobile"));
 
 // test whether the number (as a string) sent to you is a binary number
 function testBinary (number) {
-  
+    let x = /\b[0-1]+\b/
+    return x.test(number)
 }
 
 console.assert(testBinary("0"));
@@ -82,7 +85,10 @@ console.assert(!testBinary("911"));
 
 // test whether the number sent to you as a binary is an even number
 function testBinaryEven (number) {
-  
+  if(number % 2 === 0) {
+    return true
+  }
+  return false
 }
 
 console.assert(testBinaryEven("10"));
@@ -90,9 +96,10 @@ console.assert(testBinaryEven("1110100010"));
 console.assert(!testBinaryEven("1011"));
 
 
-// test whether the number sent to yo is a valid hex string
+// test whether the number sent to you is a valid hex string
 function testHex (str) {
-  
+  let x = /\b[0-9,A-F]+\b/
+  return x.test(str)
 }
 
 console.assert(testHex("CAFE"));
@@ -130,7 +137,8 @@ console.assert(!testMoney("$$31"));
 
 // test whether the str sent to you is a valid zip code
 function testZip (str) {
-  
+  let x = /^\d{5}(?:-\d{4})?$/
+  return x.test(str)
 }
 
 console.assert(testZip("63936"));
@@ -195,3 +203,24 @@ function extractEmails (text) {
 }
 
 console.assert(extractEmails("Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth@gmail.com tatsoi tomatillo azuki bean garlic. Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea@sprouts.org fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber.earthnut@pea.net peanut soko zucchini.").equals(["amaranth@gmail.com","pea@sprouts.org", "cucumber.earthnut@pea.net"]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
