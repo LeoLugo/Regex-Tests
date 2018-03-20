@@ -157,8 +157,10 @@ console.assert(!testZip("8029-3924"));
 // would simply be replaced with the following HTML: <a href="http://example.com">text</a>.
 // Be careful with images. ![alt text](image location) should be left alone, as it isn't a link.
 function markDownLink (text) {
-
+     return text.replace(/\[(.+)\]\((\w+:\/\/\w+\.\w+(\/)?)\)/, "<a href="$2">$1</a>")
 }
+
+// NOT WORKING
 
 console.assert(markDownLink('[Basic link](http://example.com)') === '<a href="http://example.com">Basic link</a>');
 console.assert(markDownLink('[Another](http://example.com/)') === '<a href="http://example.com/">Another</a>');
